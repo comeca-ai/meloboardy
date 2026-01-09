@@ -1,4 +1,4 @@
-import { anthropic } from "@ai-sdk/anthropic";
+import { openai } from "@ai-sdk/openai";
 import { customProvider } from "ai";
 import { isTestEnvironment } from "../constants";
 
@@ -22,30 +22,30 @@ export const myProvider = isTestEnvironment
     })()
   : null;
 
-// Modelo padrão do Caramelo
-const DEFAULT_MODEL = "claude-sonnet-4-20250514";
+// Modelo padrão do Caramelo - GPT-4o
+const DEFAULT_MODEL = "gpt-4o";
 
 export function getLanguageModel(modelId?: string) {
   if (isTestEnvironment && myProvider) {
     return myProvider.languageModel("chat-model");
   }
 
-  // Usa Claude Sonnet como padrão para o Caramelo
-  return anthropic(modelId || DEFAULT_MODEL);
+  // Usa GPT-4o como padrão para o Caramelo
+  return openai(modelId || DEFAULT_MODEL);
 }
 
 export function getTitleModel() {
   if (isTestEnvironment && myProvider) {
     return myProvider.languageModel("title-model");
   }
-  // Haiku para títulos (mais rápido e barato)
-  return anthropic("claude-3-5-haiku-20241022");
+  // GPT-4o-mini para títulos (mais rápido e barato)
+  return openai("gpt-4o-mini");
 }
 
 export function getArtifactModel() {
   if (isTestEnvironment && myProvider) {
     return myProvider.languageModel("artifact-model");
   }
-  // Haiku para artifacts
-  return anthropic("claude-3-5-haiku-20241022");
+  // GPT-4o-mini para artifacts
+  return openai("gpt-4o-mini");
 }

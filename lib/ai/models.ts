@@ -1,5 +1,5 @@
-// Caramelo usa Claude como modelo principal
-export const DEFAULT_CHAT_MODEL = "claude-sonnet-4-20250514";
+// Caramelo usa OpenAI como modelo principal
+export const DEFAULT_CHAT_MODEL = "gpt-4o";
 
 export type ChatModel = {
   id: string;
@@ -10,15 +10,15 @@ export type ChatModel = {
 
 export const chatModels: ChatModel[] = [
   {
-    id: "claude-sonnet-4-20250514",
-    name: "Claude Sonnet 4",
-    provider: "anthropic",
-    description: "Modelo principal do Caramelo - balanceado e inteligente",
+    id: "gpt-4o",
+    name: "GPT-4o",
+    provider: "openai",
+    description: "Modelo principal do Caramelo - mais inteligente",
   },
   {
-    id: "claude-3-5-haiku-20241022",
-    name: "Claude Haiku",
-    provider: "anthropic",
+    id: "gpt-4o-mini",
+    name: "GPT-4o Mini",
+    provider: "openai",
     description: "Rápido e econômico para tarefas simples",
   },
 ];
